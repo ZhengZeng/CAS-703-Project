@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="recorder" nsURI="http://edu.mcm.cas703.project" nsPrefix="edu.mcm.cas703.project">
+  <eClassifiers xsi:type="ecore:EClass" name="RecComponent" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pos_x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pos_y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comp_width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comp_height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecDisplay" abstract="true" eSuperTypes="#//RecComponent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dispColor" eType="#//RecColor"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RecColor">
+    <eLiterals name="RED" value="10" literal="RED"/>
+    <eLiterals name="GREEN" value="20" literal="GREEN"/>
+    <eLiterals name="GRAY" value="30" literal="GRAY"/>
+    <eLiterals name="BLUE" value="40" literal="BLUE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecButton" abstract="true" eSuperTypes="#//RecComponent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cmdName" eType="#//CommandType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CommandType">
+    <eLiterals name="START" value="1000" literal="START"/>
+    <eLiterals name="STOP" value="1010"/>
+    <eLiterals name="DELETE" value="1020" literal="DELETE"/>
+    <eLiterals name="MEM" value="1030" literal="MEM"/>
+    <eLiterals name="UP" value="1040" literal="UP"/>
+    <eLiterals name="DOWN" value="1041" literal="DOWN"/>
+    <eLiterals name="CHANGE_MODE" value="2000" literal="CHANGE_MODE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecFile">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecMem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="files" upperBound="100"
+        eType="#//RecFile" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="curFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memSize" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecorderModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="btnContainer" lowerBound="1"
+        upperBound="2" eType="#//ButtonContainer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dispContainer" lowerBound="1"
+        eType="#//DispContainer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="memContainer" lowerBound="1"
+        eType="#//MemoryContainer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recorderNm" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="curStatus" eType="#//RecStatus"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="curFunction" eType="#//RecFunctions"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NormalBtn" eSuperTypes="#//RecButton"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DispLCD" eSuperTypes="#//RecDisplay"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ButtonContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="buttons" lowerBound="2"
+        upperBound="10" eType="#//RecButton" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DispContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="displays" lowerBound="1"
+        upperBound="2" eType="#//RecDisplay" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MemoryContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="memories" lowerBound="1"
+        eType="#//RecMem" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RecFunctions">
+    <eLiterals name="Sound_Record" value="100" literal="Sound_Record"/>
+    <eLiterals name="Sound_Play" value="200" literal="Sound_Play"/>
+    <eLiterals name="Check_Mem" value="300" literal="Check_Mem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RecStatus">
+    <eLiterals name="WORKING" literal="WORKING"/>
+    <eLiterals name="STOPPED" value="10" literal="STOPPED"/>
+  </eClassifiers>
+</ecore:EPackage>

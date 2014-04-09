@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="MakeRecorder.contribution1">
+         <menu
+               label="Make Recorder"
+               path="additions"
+               id="MakeRecorder.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Make"
+               class="makerecorder.popup.actions.MakeRecorderAction"
+               menubarPath="MakeRecorder.menu1/group1"
+               enablesFor="1"
+               id="MakeRecorder.makeAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

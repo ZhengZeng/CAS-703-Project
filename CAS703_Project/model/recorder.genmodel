@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/CAS703_Project/src" modelPluginID="CAS703_Project"
+    modelName="Recorder" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>recorder.ecore</foreignModel>
+  <genPackages prefix="Recorder" disposableProviderFactory="true" ecorePackage="recorder.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="recorder.ecore#//RecColor">
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//RecColor/RED"/>
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//RecColor/GREEN"/>
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//RecColor/GRAY"/>
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//RecColor/BLUE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="recorder.ecore#//CommandType">
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//CommandType/START"/>
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//CommandType/STOP"/>
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//CommandType/DELETE"/>
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//CommandType/MEM"/>
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//CommandType/UP"/>
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//CommandType/DOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//CommandType/CHANGE_MODE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="recorder.ecore#//RecFunctions">
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//RecFunctions/Sound_Record"/>
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//RecFunctions/Sound_Play"/>
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//RecFunctions/Check_Mem"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="recorder.ecore#//RecStatus">
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//RecStatus/WORKING"/>
+      <genEnumLiterals ecoreEnumLiteral="recorder.ecore#//RecStatus/STOPPED"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="recorder.ecore#//RecComponent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecComponent/pos_x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecComponent/pos_y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecComponent/comp_width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecComponent/comp_height"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecComponent/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecComponent/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="recorder.ecore#//RecDisplay">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecDisplay/dispColor"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="recorder.ecore#//RecButton">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecButton/cmdName"/>
+    </genClasses>
+    <genClasses ecoreClass="recorder.ecore#//RecFile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecFile/fileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecFile/size"/>
+    </genClasses>
+    <genClasses ecoreClass="recorder.ecore#//RecMem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecMem/id"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference recorder.ecore#//RecMem/files"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecMem/curFile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecMem/memSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecMem/brand"/>
+    </genClasses>
+    <genClasses ecoreClass="recorder.ecore#//RecorderModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference recorder.ecore#//RecorderModel/btnContainer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference recorder.ecore#//RecorderModel/dispContainer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference recorder.ecore#//RecorderModel/memContainer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecorderModel/recorderNm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecorderModel/curStatus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute recorder.ecore#//RecorderModel/curFunction"/>
+    </genClasses>
+    <genClasses ecoreClass="recorder.ecore#//NormalBtn"/>
+    <genClasses ecoreClass="recorder.ecore#//DispLCD"/>
+    <genClasses ecoreClass="recorder.ecore#//ButtonContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference recorder.ecore#//ButtonContainer/buttons"/>
+    </genClasses>
+    <genClasses ecoreClass="recorder.ecore#//DispContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference recorder.ecore#//DispContainer/displays"/>
+    </genClasses>
+    <genClasses ecoreClass="recorder.ecore#//MemoryContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference recorder.ecore#//MemoryContainer/memories"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
